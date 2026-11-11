@@ -1,0 +1,38 @@
+<template>
+    <div class="app slds-var-p-around_medium">
+        <div class="box">
+            <h1>BMI Calculator</h1>
+            <h1>Your BMI is: {bmiValue}</h1>
+                <template if:true={result}>
+                    <section>
+                        <h2>Your category is: {result}</h2>
+                        <button class = "slds-button slds-button neutral slds-button_stretch custom-button slds-var-m-bottom-large slds-var-m-top_large" type="submit" onclick={recalculate}>Re-Calculate</button>
+
+                    </section>
+                </template>
+            <template if:false={result}>
+            <form >
+                <div>
+                    <lightning-input name="height" class="slds-form-element slds-text-title_bold slds-var-m-bottom-medium" label="Height(cm)" placeholder="Enter your height" type="number" required="true" min="0" value={height} onchange={inputHandler}></lightning-input>
+                </div>
+                <div>
+                    <lightning-input name="weight" class="slds-form-element slds-text-title_bold slds-var-m-bottom-medium" label="Weight(kg)" placeholder="Enter your weight" type="number" required="true" min="0" value={weight} onchange={inputHandler}></lightning-input>
+                </div>
+                <button class = "slds-button slds-button neutral slds-button_stretch custom-button slds-var-m-bottom-large" type="submit" onclick={submitHandler}>Calculate</button>
+            </form >
+            </template>
+            <div class = "info-wrapper">
+                <h2>What your BMI means</h2>
+                <p class="slds-var-m-bottom-medium">Once you have measured your BMI, you can determine your health weight range. If your BMI is:.</p>
+                <h3 class="slds-text-color_error slds-text-heading_medium">Under 18.5</h3>
+                <p class="slds-var-m-bottom-medium">You are considered underweight and possibly malnourished.</p>
+                <h3 class="slds-text-color_success slds-text-heading_medium">Between 18.5 - 24.9</h3>
+                <p class="slds-var-m-bottom-medium">You have a healthy weight range for young and middle-aged adults.</p>
+                <h3 class="slds-text-color_error slds-text-heading_medium">25.0 - 29.9</h3>
+                <p class="slds-var-m-bottom-medium">You are considered overweight.</p>
+                <h3 class="slds-text-color_error slds-text-heading_medium">30 or above</h3>
+                <p class="slds-var-m-bottom-medium">You are considered obese.</p>
+            </div>
+        </div>
+    </div>
+</template>
